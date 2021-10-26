@@ -1,0 +1,35 @@
+###
+GET https://api.imgflip.com/get_memes HTTP/1.1
+
+###
+
+POST https://api.imgflip.com/caption_image HTTP/1.1
+User-Agent: insomnia/2020.4.1
+Content-Type: multipart/form-data; boundary=ALBERTOS-RULES
+Accept: */*
+
+--ALBERTOS-RULES
+Content-Disposition: form-data; name="template_id"
+
+87743020
+--ALBERTOS-RULES
+Content-Disposition: form-data; name="username"
+
+fjortegan
+--ALBERTOS-RULES
+Content-Disposition: form-data; name="password"
+
+pestillo
+--ALBERTOS-RULES
+Content-Disposition: form-data; name="text0"
+
+¿Usar PHP
+--ALBERTOS-RULES
+Content-Disposition: form-data; name="text1"
+
+o dejar el ciclo?
+--ALBERTOS-RULES
+Content-Disposition: form-data; name="text2"
+
+Mejor lo dejo
+--ALBERTOS-RULES--
