@@ -10,8 +10,8 @@ services:
     volumes:
       - ./codigophp:/var/www/html
     # Sólo en máquinas Linux, comentar estas dos líneas en otros sistemas de lusers
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+#    extra_hosts:
+#      - "host.docker.internal:host-gateway"
 
   db:
     image: mariadb

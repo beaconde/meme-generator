@@ -18,9 +18,9 @@ Es importante incluir un archivo .sql con las sentencias para crear las tablas y
 
 #### Items de evaluación:
 ###### OBLIGATORIOS:  
-- [ ] CRUD Usuarios  
-- [ ] Login/logout  
-- [ ] Control de sesión de usuario  
+- [x] CRUD Usuarios  
+- [x] Login/logout  
+- [x] Control de sesión de usuario  
 - [ ] Creación de memes  
 	- [ ] Listado de memes disponibles  
 	- [ ] Ajuste de literales según el meme  
