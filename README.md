@@ -21,11 +21,11 @@ Es importante incluir un archivo .sql con las sentencias para crear las tablas y
 - [x] CRUD Usuarios  
 - [x] Login/logout  
 - [x] Control de sesión de usuario  
-- [ ] Creación de memes  
+- [x] Creación de memes  
 	- [x] Listado de memes disponibles  
 	- [x] Ajuste de literales según el meme  
 	- [x] Visualización de la imagen generada  
-- [ ] Listado de memes creados por un usuario
+- [x] Listado de memes creados por un usuario
 
 ###### OPCIONALES:
 - [ ] Filtro de memes por denominación

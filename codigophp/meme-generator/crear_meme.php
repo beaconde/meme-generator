@@ -1,4 +1,8 @@
 <?php
+require_once "../sesion/Sesion.php";
+$sesion = new Sesion();
+$sesion->check_logged_in();
+
 $id = $_GET["id"];
 $box_count = $_GET["box_count"];
 $url = $_GET["url"];

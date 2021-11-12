@@ -18,9 +18,11 @@ $sesion->check_logged_in();
 <body>
 <?php
     echo '<h1>Bienvenido ' . $_SESSION["username"] . '</h1>';
+    echo '<img src="../img/perfil/anon.png"> <br>';
     echo '<a href="listado_memes.php">Crear meme</a> <br>';
-    echo '<a href="../usuarios/borrar_usuario.php" >Borrar cuenta</a> <br>';
-    echo '<a href="../usuarios/actualizar_usuario.php" >Editar cuenta</a>';
+    echo '<a href="mis_memes.php">Mis memes</a> <br>';
+    echo '<a href="../usuarios/actualizar_usuario.php" >Editar cuenta</a> <br>';
+    echo '<a href="../usuarios/borrar_usuario.php" >Borrar cuenta</a>';
 ?>
     <form action="../sesion/action.php" method="post">
         <input type="submit" name="action" value="Cerrar sesión">

@@ -1,3 +1,9 @@
+<?php
+require_once "../sesion/Sesion.php";
+$sesion = new Sesion();
+$sesion->check_logged_in();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

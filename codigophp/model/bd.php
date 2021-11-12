@@ -42,6 +42,12 @@ class Model {
         return $this->conn->query("select * from usuarios")->fetchAll(PDO::FETCH_CLASS, "Usuario", array("follow" => true));
     }
 
+    public function usuario($id_usuario, $follow) {
+        $statement = $this->conn->prepare("select from usuarios where id = :id_usuario");
+        $statement->execute(array(":id_usuario" => $id_usuario));
+        return $statement->fetchObject("Usuario", array("follow" => $follow));
+    }
+
     public function check_usuario($username, $password) {
         $statement = $this->conn->prepare("select count(*) from usuarios where username = :username and password = :password");
         $statement->execute(array(":username" => $username, ":password" => crypt($password, "juas")));
@@ -50,11 +56,23 @@ class Model {
 
     public function memes_usuario($id_usuario, $follow = false) {
         $statement = $this->conn->prepare("select * from memes where usuario = :id_usuario");
-        $this->execute(array(":id_usuario" => $id_usuario));
+        $statement->execute(array(":id_usuario" => $id_usuario));
         return $statement->fetchAll(PDO::FETCH_CLASS, "Meme", array("follow" => $follow));
     }
 
     // Memes
+
+    public function crea_meme($name, $image, $usuario) {
+        $statement = $this->conn->prepare("insert into memes (name, image, usuario) values(:name, :image, :usuario)");
+        $statement->execute(array(":name" => $name, ":image" => $image, ":usuario" => $usuario));
+        return $statement->rowCount();
+    }
+
+    public function borra_meme($id_meme) {
+        $statement = $this->conn->prepare("delete from memes where id = :id_meme");
+        $statement->execute(array(":id_meme" => $id_meme));
+        return $statement->rowCount();
+    }
 
 
 }
@@ -86,6 +104,36 @@ class Usuario {
 
     public function getMemes() {
         return $this->memes;
+    }
+
+}
+
+class Meme {
+    private $id;
+    private $name;
+    private $image;
+    private $usuario;
+
+    public function __construct($follow=true) {
+        if ($follow) {
+            $this->usuario = Model::getInstance()->usuario($this->usuario, false);
+        }
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function getUsuario() {
+        return $this->usuario;
     }
 
 }
