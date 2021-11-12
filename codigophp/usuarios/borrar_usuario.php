@@ -7,7 +7,13 @@ try {
     $my_model = Model::getInstance();
     $sesion = new Sesion();
 
-    $username = $_SESSION["username"];
+    foreach ($my_model->usuarios() as $usuario) {
+        if ($usuario->getUsername() == $_SESSION["username"]) {
+            $username = $usuario->getUsername();
+            break;
+        }
+    }
+
     $filas = $my_model->borra_usuario($username);
 
     if ($filas == 0) {

@@ -5,6 +5,13 @@ $sesion = new Sesion();
 $sesion->check_logged_in();
 
 $my_model = Model::getInstance();
+foreach ($my_model->usuarios() as $usuario) {
+    if ($usuario->getUsername() == $_SESSION["username"]) {
+        $username = $usuario->getUsername();
+        $mis_memes = $usuario->getMemes();
+        break;
+    }
+}
 
 ?>
 
@@ -16,22 +23,16 @@ $my_model = Model::getInstance();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php
-    echo '<title>Memes de ' . $_SESSION["username"] . '</title>';
+    echo '<title>Memes de ' . $username . '</title>';
     ?>
 </head>
 <body>
 <?php
-    echo '<h1>Memes de ' . $_SESSION["username"] . '</h1>';
+    echo '<h1>Memes de ' . $username . '</h1>';
     echo '<a href="listado_memes.php">Crear meme</a> <br>';
     echo '<a href="perfil.php">Volver al perfil</a> <br>';
     if (isset($_GET["text"])) {
         echo '<h2>' . $_GET["text"] . '</h2>';
-    }
-
-    foreach ($my_model->usuarios() as $usuario) {
-        if ($usuario->getUsername() == $_SESSION["username"]) {
-            $mis_memes = $usuario->getMemes();
-        }
     }
 
     foreach ($mis_memes as $meme) {

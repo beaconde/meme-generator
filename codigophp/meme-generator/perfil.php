@@ -1,7 +1,17 @@
 <?php
+require_once "../model/bd.php";
 require_once "../sesion/Sesion.php";
 $sesion = new Sesion();
 $sesion->check_logged_in();
+
+$my_model = Model::getInstance();
+foreach ($my_model->usuarios() as $usuario) {
+    if ($usuario->getUsername() == $_SESSION["username"]) {
+        $username = $usuario->getUsername();
+        break;
+    }
+}
+
 ?>
 
 
@@ -12,12 +22,12 @@ $sesion->check_logged_in();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php
-        echo '<title>Perfil de ' . $_SESSION["username"] . '</title>';
+        echo '<title>Perfil de ' . $username . '</title>';
     ?>
 </head>
 <body>
 <?php
-    echo '<h1>Bienvenido ' . $_SESSION["username"] . '</h1>';
+    echo '<h1>Bienvenido ' . $username . '</h1>';
     echo '<img src="../img/perfil/anon.png"> <br>';
     echo '<a href="listado_memes.php">Crear meme</a> <br>';
     echo '<a href="mis_memes.php">Mis memes</a> <br>';
