@@ -14,19 +14,20 @@ $url = $_GET["url"];
     <title>Crear meme</title>
 </head>
 <body>
-    <form action="" method="post">
-        <?php
+<?php
+    echo '
+        <form action="nuevo_meme.php?id=' . $id . '&box_count=' . $box_count . '" method="post">';
             for ($i = 1; $i <= $box_count; $i++) {
                 echo '
                     <label for="texto'.$i.'">Texto ' . $i . ':</label>
                     <input type="text" name="texto'.$i.'">
-                    ';
+                ';
             }
-        ?>
+    echo '
         <input type="submit" value="Crear">
-    </form>
-<?php
-    echo '<img height="500px" src="' . $url . '">';
+        </form>
+        <img height="500px" src="' . $url . '">
+    ';
 ?>
 </body>
 </html>
