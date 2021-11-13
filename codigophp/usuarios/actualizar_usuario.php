@@ -6,12 +6,8 @@ $sesion = new Sesion();
 try {
     $my_model = Model::getInstance();
 
-    foreach ($my_model->usuarios() as $usuario) {
-        if ($usuario->getUsername() == $_SESSION["username"]) {
-            $username = $usuario->getUsername();
-            break;
-        }
-    }
+    $usuario = $my_model->usuario($_SESSION["username"], false);
+    $username = $usuario->getUsername();
 
     if (isset($_POST["username"])) {
         $new_username = $_POST["username"];

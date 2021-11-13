@@ -9,12 +9,9 @@ if (isset($_POST["meme"])) {
     try {
         $my_model = Model::getInstance();
 
-        foreach ($my_model->usuarios() as $usuario) {
-            if ($usuario->getUsername() == $_SESSION["username"]) {
-                $id_usuario = $usuario->getId();
-                break;
-            }
-        }
+        $usuario = $my_model->usuario($_SESSION["username"], false);
+        $id_usuario = $usuario->getId();
+
 
         $date = date("Y-m-d");
 

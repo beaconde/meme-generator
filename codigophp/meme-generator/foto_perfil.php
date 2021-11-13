@@ -7,12 +7,10 @@ $sesion->check_logged_in();
 if (isset($_FILES["imagen"])) {
 
     $my_model = Model::getInstance();
-    foreach($my_model->usuarios() as $usuario) {
-        if ($usuario->getUsername() == $_SESSION["username"]) {
-            $imagen = $usuario->getImage();
-            break;
-        }
-    }
+
+    $usuario = $my_model->usuario($_SESSION["username"], false);
+    $imagen = $usuario->getImage();
+
 
     move_uploaded_file($_FILES["imagen"]["tmp_name"], "../img/perfil/" . basename($_FILES["imagen"]["name"]));
     if ($imagen != "../img/perfil/anon.png") {

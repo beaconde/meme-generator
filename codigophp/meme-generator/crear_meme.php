@@ -28,7 +28,7 @@ $url = $_GET["url"];
             echo '
                     <label for="texto'.$i.'" class="d-block">
                         Texto ' . $i . ':
-                        <input type="text" name="texto'.$i.'" class="form-control">
+                        <input type="text" name="texto'.$i.'" class="form-control" required>
                     </label>
                 ';
         }

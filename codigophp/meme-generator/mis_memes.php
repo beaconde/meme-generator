@@ -5,13 +5,10 @@ $sesion = new Sesion();
 $sesion->check_logged_in();
 
 $my_model = Model::getInstance();
-foreach ($my_model->usuarios() as $usuario) {
-    if ($usuario->getUsername() == $_SESSION["username"]) {
-        $username = $usuario->getUsername();
-        $mis_memes = $usuario->getMemes();
-        break;
-    }
-}
+
+$usuario = $my_model->usuario($_SESSION["username"], true);
+$username = $usuario->getUsername();
+$mis_memes = $usuario->getMemes();
 
 ?>
 

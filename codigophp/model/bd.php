@@ -48,9 +48,15 @@ class Model {
         return $this->conn->query("select * from usuarios")->fetchAll(PDO::FETCH_CLASS, "Usuario", array("follow" => true));
     }
 
-    public function usuario($id_usuario, $follow) {
+    public function usuario_id($id_usuario, $follow) {
         $statement = $this->conn->prepare("select * from usuarios where id = :id_usuario");
         $statement->execute(array(":id_usuario" => $id_usuario));
+        return $statement->fetchObject("Usuario", array("follow" => $follow));
+    }
+
+    public function usuario($username, $follow) {
+        $statement = $this->conn->prepare("select * from usuarios where username = :username");
+        $statement->execute(array(":username" => $username));
         return $statement->fetchObject("Usuario", array("follow" => $follow));
     }
 
@@ -82,6 +88,12 @@ class Model {
 
     public function memes() {
         return $this->conn->query("select * from memes")->fetchAll(PDO::FETCH_CLASS, "Meme", array("follow" => true));
+    }
+
+    public function meme($id_meme, $follow = false) {
+        $statement = $this->conn->prepare("select * from memes where id = :id_meme");
+        $statement->execute(array(":id_meme" => $id_meme));
+        return $statement->fetchObject("Usuario", array("follow" => $follow));
     }
 
 
@@ -126,7 +138,7 @@ class Meme {
 
     public function __construct($follow=true) {
         if ($follow) {
-            $this->usuario = Model::getInstance()->usuario($this->usuario, false);
+            $this->usuario = Model::getInstance()->usuario_id($this->usuario, false);
         }
     }
 

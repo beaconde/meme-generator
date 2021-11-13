@@ -9,11 +9,8 @@ $id_meme = $_GET["id"];
 try {
     $my_model = Model::getInstance();
 
-    foreach($my_model->memes() as $meme) {
-        if ($meme->getId() == $id_meme) {
-            unlink($meme->getImage());
-        }
-    }
+    $meme = $my_model->meme($id_meme);
+    unlink($meme->getImage());
 
     $filas = $my_model->borra_meme($id_meme);
 

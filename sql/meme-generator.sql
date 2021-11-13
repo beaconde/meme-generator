@@ -17,7 +17,7 @@ CREATE TABLE `memes` (
                          `usuario` bigint(20) NOT NULL,
                          PRIMARY KEY (`id`),
                          KEY `usuario` (`usuario`),
-                         CONSTRAINT `memes_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`)
+                         CONSTRAINT `memes_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
