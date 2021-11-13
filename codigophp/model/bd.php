@@ -38,12 +38,18 @@ class Model {
         return $statement->rowCount();
     }
 
+    public function subir_foto($image, $username) {
+        $statement = $this->conn->prepare("update usuarios set image = :image where username = :username");
+        $statement->execute(array(":image" => $image, ":username" => $username));
+        return $statement->rowCount();
+    }
+
     public function usuarios() {
         return $this->conn->query("select * from usuarios")->fetchAll(PDO::FETCH_CLASS, "Usuario", array("follow" => true));
     }
 
     public function usuario($id_usuario, $follow) {
-        $statement = $this->conn->prepare("select from usuarios where id = :id_usuario");
+        $statement = $this->conn->prepare("select * from usuarios where id = :id_usuario");
         $statement->execute(array(":id_usuario" => $id_usuario));
         return $statement->fetchObject("Usuario", array("follow" => $follow));
     }
@@ -72,6 +78,10 @@ class Model {
         $statement = $this->conn->prepare("delete from memes where id = :id_meme");
         $statement->execute(array(":id_meme" => $id_meme));
         return $statement->rowCount();
+    }
+
+    public function memes() {
+        return $this->conn->query("select * from memes")->fetchAll(PDO::FETCH_CLASS, "Meme", array("follow" => true));
     }
 
 

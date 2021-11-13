@@ -8,6 +8,7 @@ $my_model = Model::getInstance();
 foreach ($my_model->usuarios() as $usuario) {
     if ($usuario->getUsername() == $_SESSION["username"]) {
         $username = $usuario->getUsername();
+        $image = $usuario->getImage();
         break;
     }
 }
@@ -28,9 +29,10 @@ foreach ($my_model->usuarios() as $usuario) {
 <body>
 <?php
     echo '<h1>Bienvenido ' . $username . '</h1>';
-    echo '<img src="../img/perfil/anon.png"> <br>';
+    echo '<img width="200px" src="' . $image . '"> <br>';
     echo '<a href="listado_memes.php">Crear meme</a> <br>';
     echo '<a href="mis_memes.php">Mis memes</a> <br>';
+    echo '<a href="foto_perfil.php">Cambiar foto de perfil</a> <br>';
     echo '<a href="../usuarios/actualizar_usuario.php" >Editar cuenta</a> <br>';
     echo '<a href="../usuarios/borrar_usuario.php" >Borrar cuenta</a>';
 ?>
