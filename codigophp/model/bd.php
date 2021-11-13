@@ -20,7 +20,7 @@ class Model {
 
     // Usuarios
 
-    public function crea_usuario($username, $password, $image = "anon.png") {
+    public function crea_usuario($username, $password, $image = "../img/perfil/anon.png") {
         $statement = $this->conn->prepare("insert into usuarios (username, password, image) values(:username, :password, :image)");
         $statement->execute(array(":username" => $username, ":password" => crypt($password, "juas"), ":image" => $image));
         return $statement->rowCount();
