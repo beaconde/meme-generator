@@ -73,19 +73,22 @@ if (isset($_POST["meme"])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Nuevo meme</title>
 </head>
 <body>
-<?php
-if ($data["success"]) {
-    echo "<img src='" . $data["data"]["url"] . "'>";
-}
-?>
-    <form action="" method="post">
+    <section class="d-flex p-5">
         <?php
-            echo '<input type="hidden" name="meme" value="' . $data["data"]["url"] . '">';
+        if ($data["success"]) {
+            echo "<img src='" . $data["data"]["url"] . "' >";
+        }
         ?>
-        <input type="submit" value="Guardar">
-    </form>
+        <form action="" method="post" class="d-flex flex-column justify-content-center ml-5">
+            <?php
+            echo '<input type="hidden" name="meme" value="' . $data["data"]["url"] . '">';
+            ?>
+            <input type="submit" value="Guardar" class="btn btn-primary mt-3">
+        </form>
+    </section>
 </body>
 </html>

@@ -10,11 +10,13 @@ $sesion->check_logged_in();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Listado de memes</title>
 </head>
 <body>
-    <h1>Elige tu plantilla</h1>
-    <?php
+    <section class="p-3">
+        <h1 class="p-3">Elige tu plantilla</h1>
+        <?php
         $url = 'https://api.imgflip.com/get_memes';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -24,9 +26,10 @@ $sesion->check_logged_in();
         if ($data["success"]) {
             foreach ($data["data"]["memes"] as $meme) {
 //                echo '<h2>' . $meme["name"] . '</h2>';
-                echo '<a href="crear_meme.php?id=' . $meme["id"] . '&box_count=' . $meme["box_count"] . '&url=' . $meme["url"] . '" ><img width ="150px" src="' . $meme["url"] . '"></a>';
+                echo '<a href="crear_meme.php?id=' . $meme["id"] . '&box_count=' . $meme["box_count"] . '&url=' . $meme["url"] . '" class="p-2" ><img width ="150px" src="' . $meme["url"] . '"></a>';
             }
         }
-    ?>
+        ?>
+    </section>
 </body>
 </html>

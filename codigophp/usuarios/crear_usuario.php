@@ -25,18 +25,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Crear usuario</title>
 </head>
 <body>
-    <form action="" method="post">
-        <label for="username">Usuario: </label>
-        <input type="text" name="username">
-        <label for="password">Contraseña: </label>
-        <input type="password" name="password">
-        <input type="submit" value="Crear">
+    <form action="" method="post" class="form-group p-5">
+        <fieldset>
+            <legend>Crear cuenta</legend>
+            <label for="username" class="d-block">
+                Usuario:
+                <input type="text" name="username" class="form-control w-25">
+            </label>
+            <label for="password" class="d-block">
+                Contraseña:
+                <input type="password" name="password" class="form-control w-25">
+            </label>
+            <input type="submit" value="Crear" class="btn btn-primary mt-3">
+        </fieldset>
     </form>
     <?php
-        echo '<span>¿Ya tienes una cuenta? <a href="../sesion/login.php">Inicia sesión</a> </span>';
+        echo '<span class="p-5">¿Ya tienes una cuenta? <a href="../sesion/login.php">Inicia sesión</a> </span>';
     ?>
 </body>
 </html>

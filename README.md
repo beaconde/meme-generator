@@ -30,7 +30,7 @@ Es importante incluir un archivo .sql con las sentencias para crear las tablas y
 ###### OPCIONALES:
 - [ ] Filtro de memes por denominación
 - [x] Foto de perfil de usuario
-- [ ] Estilo y diseño frontend
+- [x] Estilo y diseño frontend
 - [ ] Uso de otras API o librerías
 
 #### Plazo:
