@@ -80,12 +80,15 @@ if (isset($_POST["meme"])) {
             echo "<img src='" . $data["data"]["url"] . "' >";
         }
         ?>
-        <form action="" method="post" class="d-flex flex-column justify-content-center ml-5">
-            <?php
-            echo '<input type="hidden" name="meme" value="' . $data["data"]["url"] . '">';
-            ?>
-            <input type="submit" value="Guardar" class="btn btn-primary mt-3">
-        </form>
+        <section class="d-flex flex-column justify-content-center ml-5">
+            <form action="" method="post" >
+                <?php
+                echo '<input type="hidden" name="meme" value="' . $data["data"]["url"] . '">';
+                ?>
+                <input type="submit" value="Guardar" class="btn btn-primary mt-3">
+            </form>
+            <a href="perfil.php" class="mt-3">Volver al perfil</a>
+        </section>
     </section>
 </body>
 </html>
